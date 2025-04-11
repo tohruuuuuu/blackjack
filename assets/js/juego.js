@@ -43,7 +43,22 @@ const pedirCarta = () => {
     let carta = deck.pop();
         console.log( deck ); // carta debe ser de la baraja y dejar de existir en el array
         console.log( carta ); 
-    return;
+    return carta;
 }
 
 //pedirCarta()
+
+const valorCarta = (carta) => {
+
+    const valor = carta.substring(0, carta.length - 1);
+    return ( isNaN(valor)   ) ?
+            ( valor === 'A' ) ? 11 : 10 
+            : valor * 1;
+}
+
+const valor = valorCarta( pedirCarta() );
+console.log({valor});
+
+
+
+
