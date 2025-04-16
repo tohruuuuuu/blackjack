@@ -17,6 +17,7 @@ let puntosComputaodra = 0;
 //referencias del html
 const btnPedirCarta = document.querySelector('#btnPedirCarta');
 
+const divCartasJugador = document.querySelector('#Jugador-cartas');
 const puntosHTML = document.querySelectorAll('small');
 
 //crear un nuevo deck
@@ -74,9 +75,24 @@ btnPedirCarta.addEventListener('click', () => {
     puntosJugador = puntosJugador + valorCarta( carta );
     puntosHTML[0].innerText = puntosJugador;
 
-    
+    //div.cartasJugador //
 
-})
+    //funcionalidad de crear cartas visibles jugador
+
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `cartas/${ carta }.png`
+    imgCarta.classList.add('carta');
+    divCartasJugador.append(imgCarta);
+
+    if ( puntosJugador > 21 ) {
+        console.warn('lo siento mucho, perdiste')
+        btnPedirCarta.disabled = true;
+    } else if ( puntosJugador === 21 ) {
+        console.warn('!el jugador gana!')
+    }
+
+
+});
 
 
 
